@@ -19,10 +19,18 @@ import java.util.Set;
  */
 public class Main {
 
+	private enum WeekEndType {
+		dissabte, diumenge;
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		WeekEndType type = WeekEndType.valueOf("dissabte");
+		System.out.println(type);
+		
 //		List<String> list = Arrays.asList("alfa", "charlie", "bravo", "alfa");
 //		//list.add(null);
 //		List<String> list2 = new ArrayList<>(list);
