@@ -24,13 +24,55 @@ public class Main {
 	}
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		WeekEndType type = WeekEndType.valueOf("dissabte");
 		System.out.println(type);
 		
+		DeviceManagerImpl dev = new DeviceManagerImpl("devices");
 		
+//		System.out.println(dev.getDevices());
+		
+		System.out.println(dev.getMapByType());
+		
+		
+		///////////////////////////////////////////////7
+		
+		// /*
+		// * Un mapa es similar a un diccionario, puede asociar parejas
+		// * no funciona con primitivos, solo con clases
+		// * tampoco se instancia ( new map<>() ) se realiza con hashMap
+		// */
+		//
+		// Map<Long, String> map = new HashMap<>();
+		//
+		// // añadir se utiliza el put
+		//
+		// map.put(625346L, "pepe");
+		// map.put(625345L, "martina");
+		// map.put(625344L, "tere");
+		// map.put(625343L, "joan");
+		//
+		//
+		// System.out.println(map.get(625342L)); // Si no existe, retorna null
+		//
+		// map.remove(625344L);
+		//
+		// System.out.println(map.get(625344L));
+		//
+		// map.remove(625344L); // No da exceptions al eliminar dos veces
+		//
+		// Set<Long> keys = map.keySet(); // no puede ser duplicado
+		// System.out.println(keys);
+		//
+		// map.put(625348L, "pepe");
+		//
+		// Collection<String> c = map.values(); // Si que puede ser duplicado ej: dos
+		// joans
+		//
+		// System.out.println(c);
 		
 	}
 
