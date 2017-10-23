@@ -9,7 +9,7 @@ package org.escoladeltreball.fifthassignment;
 public class Device implements Comparable<Device> {
 	
 	private long id;
-	private String deviceType;
+	private DeviceType deviceType;
 	private String brand;
 	private String model;
 	private double price;
@@ -21,7 +21,7 @@ public class Device implements Comparable<Device> {
 	 * @param model
 	 * @param price
 	 */
-	public Device(long id, String deviceType, String brand, String model, double price) {
+	public Device(long id, DeviceType deviceType, String brand, String model, double price) {
 		this.id = id;
 		this.deviceType = deviceType;
 		this.brand = brand;
@@ -94,14 +94,14 @@ public class Device implements Comparable<Device> {
 	/**
 	 * @return the deviceType
 	 */
-	public String getDeviceType() {
+	public DeviceType getDeviceType() {
 		return deviceType;
 	}
 
 	/**
 	 * @param deviceType the deviceType to set
 	 */
-	public void setDeviceType(String deviceType) {
+	public void setDeviceType(DeviceType deviceType) {
 		this.deviceType = deviceType;
 	}
 

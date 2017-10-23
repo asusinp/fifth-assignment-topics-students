@@ -37,7 +37,8 @@ public abstract class DeviceManager {
 			String[] fields = record.split(",");
 			long id = Long.parseLong(fields[0]);
 			double price = Double.parseDouble(fields[4]);
-			Device device = new Device(id, fields[1], fields[2], fields[3], price);
+			DeviceType devType = DeviceType.valueOf(fields[1]);
+			Device device = new Device(id, devType, fields[2], fields[3], price);
 			devices.add(device);
 		}
 	}
