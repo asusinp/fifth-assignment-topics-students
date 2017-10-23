@@ -3,6 +3,10 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +26,20 @@ public abstract class DeviceManager {
 	 * @param fileName
 	 * @throws Exception
 	 */
-	public DeviceManager(final String fileName) throws Exception {
-
+	public DeviceManager(final String devicesFile) throws Exception {
+		setUp(devicesFile);
+	}
+	
+	public void setUp(String devicesFile) throws IOException {
+		List<String> records = Files.readAllLines(Paths.get(devicesFile));
+		devices = new ArrayList<>();
+		for (String record : records) {
+			String[] fields = record.split(",");
+			long id = Long.parseLong(fields[0]);
+			double price = Double.parseDouble(fields[4]);
+			Device device = new Device(id, fields[1], fields[2], fields[3], price);
+			devices.add(device);
+		}
 	}
 
 	/**
