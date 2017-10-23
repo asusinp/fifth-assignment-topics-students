@@ -10,7 +10,7 @@ package org.escoladeltreball.fifthassignment;
 public class Device {
 	
 	private int id;
-	private String type;
+	private DeviceType type;
 	private String brand;
 	private String model;
 	private double price;
@@ -22,7 +22,7 @@ public class Device {
 	 * @param model
 	 * @param price
 	 */
-	public Device(int id, String type, String brand, String model, double price) {
+	public Device(int id, DeviceType type, String brand, String model, double price) {
 		this.id = id;
 		this.type = type;
 		this.brand = brand;
@@ -47,14 +47,14 @@ public class Device {
 	/**
 	 * @return the type
 	 */
-	public String getType() {
+	public DeviceType getType() {
 		return type;
 	}
 
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(String type) {
+	public void setType(DeviceType type) {
 		this.type = type;
 	}
 

@@ -31,7 +31,8 @@ public abstract class DeviceManager {
 		
 		for (String record: records) {
 			String[] fields = record.split(",");
-			Device device = new Device(Integer.parseInt(fields[0]),fields[1].toString(),
+			DeviceType dev = DeviceType.valueOf(fields[1]);
+			Device device = new Device(Integer.parseInt(fields[0]),dev,
 					fields[2].toString(),fields[3].toString(),Double.parseDouble(fields[4]));
 			devices.add(device);
 		}
