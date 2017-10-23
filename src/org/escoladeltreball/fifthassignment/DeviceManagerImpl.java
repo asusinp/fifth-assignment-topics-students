@@ -3,7 +3,9 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,13 +18,22 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	public DeviceManagerImpl(String fileName) throws Exception {
 		super(fileName);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Map<DeviceType, List<Device>> map = new HashMap<>();
+		DeviceType[] types = DeviceType.values();
+		for (DeviceType deviceType : types) {
+			List<Device> list = new ArrayList<>();
+			for (Device device : devices) {
+				if (deviceType.equals(device.getDeviceType())) {
+					list.add(device);
+				}
+			}
+			map.put(deviceType, list);
+		}
+		return map;
 	}
 
 	@Override
