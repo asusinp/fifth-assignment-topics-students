@@ -16,7 +16,6 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	public DeviceManagerImpl(String fileName) throws Exception {
 		super(fileName);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -44,7 +43,7 @@ public class DeviceManagerImpl extends DeviceManager {
 	}
 
 	@Override
-	public Map<DeviceType, Double> findCheapestDeviceOfEachType() throws Exception {
+	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
