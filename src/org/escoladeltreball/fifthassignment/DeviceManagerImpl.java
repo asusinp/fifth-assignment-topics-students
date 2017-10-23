@@ -4,6 +4,7 @@
 package org.escoladeltreball.fifthassignment;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,12 +17,12 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	public DeviceManagerImpl(String fileName) throws Exception {
 		super(fileName);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
-		// TODO Auto-generated method stub
+		Map<DeviceType, List<Device>> map = new HashMap<>();
+		//List<Device> l1
 		return null;
 	}
 
@@ -44,7 +45,7 @@ public class DeviceManagerImpl extends DeviceManager {
 	}
 
 	@Override
-	public Map<DeviceType, Double> findCheapestDeviceOfEachType() throws Exception {
+	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
