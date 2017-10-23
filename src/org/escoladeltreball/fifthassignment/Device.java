@@ -8,5 +8,9 @@ package org.escoladeltreball.fifthassignment;
  *
  */
 public class Device {
+	
+	private long id;
+	
+	
 
 }
