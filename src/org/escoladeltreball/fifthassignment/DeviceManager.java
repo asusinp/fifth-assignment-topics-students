@@ -26,7 +26,6 @@ public abstract class DeviceManager {
 	 */
 	public DeviceManager(final String fileName) throws Exception {
 		List<String> records = Files.readAllLines(Paths.get(fileName));
-		
 		devices = new ArrayList<>();
 		
 		for (String record: records) {

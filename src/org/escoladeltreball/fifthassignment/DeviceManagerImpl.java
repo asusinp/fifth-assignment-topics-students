@@ -4,6 +4,7 @@
 package org.escoladeltreball.fifthassignment;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,11 +17,19 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	public DeviceManagerImpl(String fileName) throws Exception {
 		super(fileName);
+		if (devices.size() == 0 || devices == null) {
+			throw new Exception("Devices missing");
+		}
 	}
 
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
-		// TODO Auto-generated method stub
+		Map <DeviceType, List<Device>> map = new HashMap<>();
+		for (Device device : devices) {
+			if (device.getType() == DeviceType.desktop) {
+			}
+		}
+		
 		return null;
 	}
 
