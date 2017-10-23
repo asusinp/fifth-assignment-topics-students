@@ -3,7 +3,12 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,7 +28,8 @@ public abstract class DeviceManager {
 	 * @throws Exception
 	 */
 	public DeviceManager(final String fileName) throws Exception {
-
+		devices = new LinkedList<Device>();
+		setup(fileName);
 	}
 
 	/**
@@ -68,5 +74,19 @@ public abstract class DeviceManager {
 	 * @throws Exception When devices is null
 	 */
 	public abstract Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception;
+	
+	private void setup(String devicesFile) throws IOException {
+		Path path = Paths.get(devicesFile);
+		List<String> devicesList = Files.readAllLines(path);
+		for (String device: devicesList) {
+			String[] fields = device.split(",");
+			long code = Long.parseLong(fields[0]);
+			DeviceType deviceType = DeviceType.valueOf(fields[1]);
+			String brand = fields[2];
+			String model = fields[3];
+			double price = Double.parseDouble(fields[4]);
+			devices.add(new Device(code, deviceType, brand, model, price));
+		}
+	}
 
 }

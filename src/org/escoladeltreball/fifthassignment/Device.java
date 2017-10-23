@@ -28,9 +28,9 @@ public class Device {
 	 * @param model
 	 * @param price
 	 */
-	public Device(long code, String deviceType, String brand, String model, Double price) {
+	public Device(long code, DeviceType deviceType, String brand, String model, Double price) {
 		this.code = code;
-		this.deviceType = DeviceType.valueOf(deviceType);
+		this.deviceType = deviceType;
 		this.brand = brand;
 		this.model = model;
 		this.price = price;
@@ -56,7 +56,7 @@ public class Device {
 	/**
 	 * @return the deviceType
 	 */
-	public Enum getDeviceType() {
+	public DeviceType getDeviceType() {
 		return deviceType;
 	}
 
