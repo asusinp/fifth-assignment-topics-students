@@ -3,6 +3,10 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -49,4 +53,17 @@ public class DeviceManagerImpl extends DeviceManager {
 		return null;
 	}
 
+	private void setup(String devicesFile) throws IOException {
+		Path path = Paths.get(devicesFile);
+		List<String> devices = Files.readAllLines(path);
+		for (String device: devices) {
+			String[] fields = device.split(",");
+			long code = Long.parseLong(fields[0]);
+			String deviceType = fields[1];
+			String brand = fields[2];
+			String model = fields[3];
+			double price = Double.parseDouble(fields[4]);
+//			devices.add(new Device(code, deviceType, brand, model, price));
+		}
+	}
 }
