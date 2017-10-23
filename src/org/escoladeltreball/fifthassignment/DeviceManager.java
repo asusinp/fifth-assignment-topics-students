@@ -3,6 +3,9 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +18,7 @@ import java.util.Set;
 public abstract class DeviceManager {
 
 	protected List<Device> devices;
-
+	
 	/**
 	 * This constructors load a list of devices from a file
 	 * 
@@ -23,7 +26,25 @@ public abstract class DeviceManager {
 	 * @throws Exception
 	 */
 	public DeviceManager(final String fileName) throws Exception {
-
+		setup(fileName);
+	}
+	
+	private void setup(String devicesFile) throws Exception {
+		//First of all, read all the lines of the file
+		List<String> records = Files.readAllLines(Paths.get(devicesFile));
+		//We're creating a list
+		this.devices = new ArrayList<>();
+		for (String record : records) {
+			//Separating the file by ","
+			String[] fields = record.split(",");
+			//Save the id
+			long id = Long.parseLong(fields[0]);
+			DeviceType type = DeviceType.valueOf(fields[1]); 
+			//create a device with the data on the file
+			Device device = new Device(id, type, fields[2], fields[3], Long.parseLong(fields[4]));
+			//add the device to the list
+			devices.add(device);
+		}
 	}
 
 	/**
@@ -67,6 +88,6 @@ public abstract class DeviceManager {
 	 * @return The cheapest device of every type in a map
 	 * @throws Exception When devices is null
 	 */
-	public abstract Map<DeviceType, Double> findCheapestDeviceOfEachType() throws Exception;
+	public abstract Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception;
 
 }
