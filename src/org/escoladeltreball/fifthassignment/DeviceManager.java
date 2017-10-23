@@ -23,7 +23,7 @@ public abstract class DeviceManager {
 	 * @throws Exception
 	 */
 	public DeviceManager(final String fileName) throws Exception {
-
+		
 	}
 
 	/**
