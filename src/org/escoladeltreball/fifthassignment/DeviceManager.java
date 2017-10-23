@@ -50,7 +50,7 @@ public abstract class DeviceManager {
 	 * @return Map of a list of devices associated with a device type
 	 * @throws Exception When devices is null
 	 */
-	public abstract Map<DeviceType, List<Device>> getMapByType() throws Exception;
+	public abstract Map<DeviceType, List<Device>> getMapByType(DeviceType type) throws Exception;
 
 	/**
 	 * This method returns a Map of a list of devices associated with a device
@@ -59,7 +59,7 @@ public abstract class DeviceManager {
 	 * @return Map of a list of devices associated with a device brand
 	 * @throws Exception When devices is null
 	 */
-	public abstract Map<String, List<Device>> getMapByBrand() throws Exception;
+	public abstract Map<String, List<Device>> getMapByBrand(String brand) throws Exception;
 
 	/**
 	 * This method returns a set of brands

@@ -11,13 +11,13 @@ public class Device {
 	
 	private long id;
 	private DeviceType type;
-	private String make;
+	private String brand;
 	private String model;
 	private double price;
 	/**
 	 * @param id
 	 * @param type
-	 * @param make
+	 * @param brand
 	 * @param model
 	 * @param price
 	 */
@@ -25,7 +25,7 @@ public class Device {
 		super();
 		this.id = id;
 		this.type = type;
-		this.make = make;
+		this.brand = make;
 		this.model = model;
 		this.price = price;
 	}
@@ -57,16 +57,16 @@ public class Device {
 		this.type = type;
 	}
 	/**
-	 * @return the make
+	 * @return the brand
 	 */
-	public String getMake() {
-		return make;
+	public String getBrand() {
+		return brand;
 	}
 	/**
-	 * @param make the make to set
+	 * @param brand the brand to set
 	 */
-	public void setMake(String make) {
-		this.make = make;
+	public void setBrand(String make) {
+		this.brand = make;
 	}
 	/**
 	 * @return the model
@@ -103,7 +103,7 @@ public class Device {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((make == null) ? 0 : make.hashCode());
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
@@ -130,11 +130,11 @@ public class Device {
 		if (id != other.id) {
 			return false;
 		}
-		if (make == null) {
-			if (other.make != null) {
+		if (brand == null) {
+			if (other.brand != null) {
 				return false;
 			}
-		} else if (!make.equals(other.make)) {
+		} else if (!brand.equals(other.brand)) {
 			return false;
 		}
 		if (model == null) {
@@ -158,7 +158,7 @@ public class Device {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Device [id=%s, type=%s, make=%s, model=%s, price=%s]", id, type, make, model, price);
+		return String.format("Device [id=%s, type=%s, brand=%s, model=%s, price=%s]", id, type, brand, model, price);
 	}
 	
 	

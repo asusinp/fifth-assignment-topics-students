@@ -19,20 +19,20 @@ public class DeviceManagerImpl extends DeviceManager {
 	}
 
 	@Override
-	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
+	public Map<DeviceType, List<Device>> getMapByType(DeviceType type) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Map<String, List<Device>> getMapByBrand() throws Exception {
+	public Map<String, List<Device>> getMapByBrand(String brand) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Set<String> getSetByBrands() throws Exception {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
