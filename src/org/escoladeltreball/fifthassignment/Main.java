@@ -37,6 +37,9 @@ public class Main {
 		
 		System.out.println(dev.getMapByType());
 		
+		System.out.println("PRUEBA");
+		dev.findCheapestDeviceOfEachType();
+		
 		
 		///////////////////////////////////////////////7
 		

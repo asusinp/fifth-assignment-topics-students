@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +55,6 @@ public class DeviceManagerImpl extends DeviceManager {
 		return map;
 	}
 
-	
 	@Override
 	public Map<String, List<Device>> getMapByBrand() throws Exception {
 		List<Device> samsung = new LinkedList<>();
@@ -79,33 +81,56 @@ public class DeviceManagerImpl extends DeviceManager {
 				sun.add(device);
 			}
 		}
-		
+
 		map.put("samsung", samsung);
 		map.put("apple", apple);
 		map.put("acer", acer);
 		map.put("ibm", ibm);
 		map.put("hc", hc);
 		map.put("sun", sun);
-		
+
 		return map;
 	}
 
 	@Override
 	public Set<String> getSetByBrands() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Set brands = new HashSet<String>();
+		for (Device device : devices) {
+			brands.add(device.getBrand());
+		}
+		return brands;
 	}
 
 	@Override
 	public List<Device> getSortedList(Comparator<Device> comparator) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (devices != null) {
+			List<Device> devicesSorted = new LinkedList<Device>(devices);
+			Collections.sort(devicesSorted, comparator);
+			return devicesSorted;
+		} else {
+			throw new Exception("devices is null or the file is unreached");
+		}
 	}
 
 	@Override
 	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Device> devicesSorted = this.getSortedList(new DevicePriceComparator());
+		Map<DeviceType, Device> map = new HashMap<>();
+		Collections.sort(devicesSorted, new DeviceTypeComparator());
+//		for(Device dev: devicesSorted) {
+//		 System.out.println(dev.toString());
+//		 }
+		DeviceType[] types = DeviceType.values();
+		for (DeviceType deviceType : types) {
+			Device devCheapest = null;
+			for (Device device : devicesSorted) {
+					if(device.getDeviceType().equals(deviceType)) {
+						devCheapest = device;
+					}
+			}
+			map.put(deviceType, devCheapest);
+		}
+		return map;
 	}
 
 	public List<Device> getDevices() {
