@@ -4,6 +4,7 @@
 package org.escoladeltreball.fifthassignment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
+		
 		return null;
 	}
 
@@ -43,14 +45,25 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public List<Device> getSortedList(Comparator<Device> comparator) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Device> devicesSorted = new ArrayList<>(devices);
+		Collections.sort(devicesSorted, comparator);
+		return devicesSorted;
 	}
 
 	@Override
 	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Map<DeviceType, Device> deviceMap = new HashMap<>();
+		List<Device> sortedDevices = getSortedList(new DevicePriceComparator());
+		Set<String> brandSet = getSetByBrands();
+		while(brandSet.size() != 0 ) {
+			Device device = sortedDevices.get(0);
+			if(brandSet.contains(device.getBrand())) {
+				deviceMap.put(device.getType(), device);
+				brandSet.remove(device.getBrand());
+			}
+			sortedDevices.remove(device);
+		}
+		return deviceMap;
 	}
 
 }

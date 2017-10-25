@@ -79,11 +79,11 @@ public class DeviceManagerImplTest {
 
 	/**
 	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#findCheapestDeviceOfEachType()}.
+	 * @throws Exception 
 	 */
-	@Ignore
 	@Test
-	public final void testFindCheapestDeviceOfEachType() {
-		fail("Not yet implemented"); // TODO
+	public final void testFindCheapestDeviceOfEachType() throws Exception {
+		assertEquals(833.93, manager.findCheapestDeviceOfEachType().get(DeviceType.smartphone).getPrice(),1e-4);
 	}
 
 }
