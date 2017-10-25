@@ -63,7 +63,37 @@ public class DeviceManagerImplTest {
 	 */
 //	@Ignore
 	@Test
-	public final void testGetMapByType() throws Exception {		
+	public final void testGetMapByType() throws Exception {	
+//		List<Device> devicesSmartphone = new ArrayList<>();
+//		List<Device> devicesLabtop = new ArrayList<>();
+//		List<Device> devicesDesktop = new ArrayList<>();
+//		List<Device> devicesSmartwear = new ArrayList<>();
+//		Map<String, List<Device>> map = new HashMap<>();
+//
+//		for (Device device : dev.getDevices()) {
+//			DeviceType type = device.getDeviceType();
+//	        
+//	        switch (type) {
+//	        case smartphone:
+//	          devicesSmartphone.add(device);
+//	          break;
+//	        case smartwear:
+//	          devicesSmartwear.add(device);
+//	          break;
+//	        case desktop:
+//	          devicesDesktop.add(device);
+//	          break;
+//	        case labtop:
+//	          devicesLabtop.add(device);
+//	          break;
+//	        default:
+//	          break;
+//	        }
+//		}
+//		map.put("smartwear", devicesSmartwear);
+//		map.put("desktop", devicesDesktop);
+//		map.put("smartphone", devicesSmartphone);
+//		map.put("labtop", devicesLabtop);
 		assertEquals(4, dev.getMapByType().size());
 	}
 	
