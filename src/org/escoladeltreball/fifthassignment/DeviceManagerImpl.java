@@ -3,11 +3,7 @@
  */
 package org.escoladeltreball.fifthassignment;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -29,76 +25,88 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
-		List<Device> smartphone = new LinkedList<>();
-		List<Device> smartwear = new LinkedList<>();
-		List<Device> labtop = new LinkedList<>();
-		List<Device> desktop = new LinkedList<>();
+		if (devices != null) {
+			List<Device> smartphone = new LinkedList<>();
+			List<Device> smartwear = new LinkedList<>();
+			List<Device> labtop = new LinkedList<>();
+			List<Device> desktop = new LinkedList<>();
 
-		Map<DeviceType, List<Device>> map = new HashMap<>();
+			Map<DeviceType, List<Device>> map = new HashMap<>();
 
-		for (Device device : devices) {
-			if (device.getDeviceType().equals(DeviceType.smartphone)) {
-				smartphone.add(device);
-			} else if (device.getDeviceType().equals(DeviceType.smartwear)) {
-				smartwear.add(device);
-			} else if (device.getDeviceType().equals(DeviceType.labtop)) {
-				labtop.add(device);
-			} else {
-				desktop.add(device);
+			for (Device device : devices) {
+				if (device.getDeviceType().equals(DeviceType.smartphone)) {
+					smartphone.add(device);
+				} else if (device.getDeviceType().equals(DeviceType.smartwear)) {
+					smartwear.add(device);
+				} else if (device.getDeviceType().equals(DeviceType.labtop)) {
+					labtop.add(device);
+				} else {
+					desktop.add(device);
+				}
 			}
-		}
 
-		map.put(DeviceType.smartphone, smartphone);
-		map.put(DeviceType.smartwear, smartwear);
-		map.put(DeviceType.labtop, labtop);
-		map.put(DeviceType.desktop, desktop);
-		return map;
+			map.put(DeviceType.smartphone, smartphone);
+			map.put(DeviceType.smartwear, smartwear);
+			map.put(DeviceType.labtop, labtop);
+			map.put(DeviceType.desktop, desktop);
+			return map;
+		} else {
+			throw new Exception("File devices is null");
+		}
 	}
 
 	@Override
 	public Map<String, List<Device>> getMapByBrand() throws Exception {
-		List<Device> samsung = new LinkedList<>();
-		List<Device> apple = new LinkedList<>();
-		List<Device> acer = new LinkedList<>();
-		List<Device> hc = new LinkedList<>();
-		List<Device> ibm = new LinkedList<>();
-		List<Device> sun = new LinkedList<>();
+		if (devices != null) {
+			List<Device> samsung = new LinkedList<>();
+			List<Device> apple = new LinkedList<>();
+			List<Device> acer = new LinkedList<>();
+			List<Device> hc = new LinkedList<>();
+			List<Device> ibm = new LinkedList<>();
+			List<Device> sun = new LinkedList<>();
 
-		Map<String, List<Device>> map = new HashMap<>();
+			Map<String, List<Device>> map = new HashMap<>();
 
-		for (Device device : devices) {
-			if (device.getBrand().equals("samsung")) {
-				samsung.add(device);
-			} else if (device.getBrand().equals("iphone")) {
-				apple.add(device);
-			} else if (device.getBrand().equals("acer")) {
-				acer.add(device);
-			} else if (device.getBrand().equals("hc")) {
-				hc.add(device);
-			} else if (device.getBrand().equals("ibm")) {
-				ibm.add(device);
-			} else if (device.getBrand().equals("sun")) {
-				sun.add(device);
+			for (Device device : devices) {
+				if (device.getBrand().equals("samsung")) {
+					samsung.add(device);
+				} else if (device.getBrand().equals("iphone")) {
+					apple.add(device);
+				} else if (device.getBrand().equals("acer")) {
+					acer.add(device);
+				} else if (device.getBrand().equals("hc")) {
+					hc.add(device);
+				} else if (device.getBrand().equals("ibm")) {
+					ibm.add(device);
+				} else if (device.getBrand().equals("sun")) {
+					sun.add(device);
+				}
 			}
+
+			map.put("samsung", samsung);
+			map.put("apple", apple);
+			map.put("acer", acer);
+			map.put("ibm", ibm);
+			map.put("hc", hc);
+			map.put("sun", sun);
+
+			return map;
+		} else {
+			throw new Exception("File devices is null");
 		}
-
-		map.put("samsung", samsung);
-		map.put("apple", apple);
-		map.put("acer", acer);
-		map.put("ibm", ibm);
-		map.put("hc", hc);
-		map.put("sun", sun);
-
-		return map;
 	}
 
 	@Override
 	public Set<String> getSetByBrands() throws Exception {
-		Set brands = new HashSet<String>();
-		for (Device device : devices) {
-			brands.add(device.getBrand());
+		if (devices != null) {
+			Set<String> brands = new HashSet<String>();
+			for (Device device : devices) {
+				brands.add(device.getBrand());
+			}
+			return brands;
+		} else {
+			throw new Exception("File devices is null");
 		}
-		return brands;
 	}
 
 	@Override
@@ -114,23 +122,28 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
-		List<Device> devicesSorted = this.getSortedList(new DevicePriceComparator());
-		Map<DeviceType, Device> map = new HashMap<>();
-		Collections.sort(devicesSorted, new DeviceTypeComparator());
-//		for(Device dev: devicesSorted) {
-//		 System.out.println(dev.toString());
-//		 }
-		DeviceType[] types = DeviceType.values();
-		for (DeviceType deviceType : types) {
-			Device devCheapest = null;
-			for (Device device : devicesSorted) {
-					if(device.getDeviceType().equals(deviceType)) {
-						devCheapest = device;
+
+		if (devices != null) {
+			Map<DeviceType, Device> map = new HashMap<>();
+			List<Device> devicesSorted = this.getSortedList(new DevicePriceComparator()); // Ordeno por precio
+
+			Collections.sort(devicesSorted, new DeviceTypeComparator()); // Ordeno por tipo de dispositivo
+
+			DeviceType[] types = DeviceType.values(); // Obtengo los valores posibles de DeviceType
+			for (DeviceType deviceType : types) {
+				List<Device> devicesByType = new ArrayList<Device>(); // Creo un ArrayList de objetos del mismo
+																		// tipo(previamente ordenados por precio)
+				for (Device device : devicesSorted) {
+					if (device.getDeviceType().equals(deviceType)) {
+						devicesByType.add(device);
 					}
+				}
+				map.put(deviceType, devicesByType.get(0)); // Siempre el de la posición 0 tendrá el menor precio.
 			}
-			map.put(deviceType, devCheapest);
+			return map;
+		} else {
+			throw new Exception("File devices is null");
 		}
-		return map;
 	}
 
 	public List<Device> getDevices() {

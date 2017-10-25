@@ -28,25 +28,29 @@ public abstract class DeviceManager {
 	 * @throws Exception
 	 */
 	public DeviceManager(final String fileName) throws Exception {
-		devices = new LinkedList<Device>();
-		setup(fileName);
+		if (fileName != null) {
+			devices = new LinkedList<Device>();
+			setup(fileName);
+		} else {
+			throw new Exception("File is unreached");
+		}
 	}
 
 	/**
-	 * This method returns a Map of a list of devices associated with a device
-	 * type
+	 * This method returns a Map of a list of devices associated with a device type
 	 * 
 	 * @return Map of a list of devices associated with a device type
-	 * @throws Exception When devices is null
+	 * @throws Exception
+	 *             When devices is null
 	 */
 	public abstract Map<DeviceType, List<Device>> getMapByType() throws Exception;
 
 	/**
-	 * This method returns a Map of a list of devices associated with a device
-	 * brand
+	 * This method returns a Map of a list of devices associated with a device brand
 	 * 
 	 * @return Map of a list of devices associated with a device brand
-	 * @throws Exception When devices is null
+	 * @throws Exception
+	 *             When devices is null
 	 */
 	public abstract Map<String, List<Device>> getMapByBrand() throws Exception;
 
@@ -54,16 +58,19 @@ public abstract class DeviceManager {
 	 * This method returns a set of brands
 	 * 
 	 * @return A set of brands
-	 * @throws Exception When devices is null
+	 * @throws Exception
+	 *             When devices is null
 	 */
 	public abstract Set<String> getSetByBrands() throws Exception;
 
 	/**
 	 * This method returns a sorted list of devices according to a comparator
 	 * 
-	 * @param comparator The sorting field
+	 * @param comparator
+	 *            The sorting field
 	 * @return A sorted list of devices according to a comparator
-	 * @throws Exception When devices null
+	 * @throws Exception
+	 *             When devices null
 	 */
 	public abstract List<Device> getSortedList(Comparator<Device> comparator) throws Exception;
 
@@ -71,14 +78,20 @@ public abstract class DeviceManager {
 	 * This method returns the cheapest device of every type in a map
 	 * 
 	 * @return The cheapest device of every type in a map
-	 * @throws Exception When devices is null
+	 * @throws Exception
+	 *             When devices is null
 	 */
 	public abstract Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception;
-	
+
+	/**
+	 * this method setup the file for read all lines
+	 * @param devicesFile
+	 * @throws IOException
+	 */
 	private void setup(String devicesFile) throws IOException {
 		Path path = Paths.get(devicesFile);
 		List<String> devicesList = Files.readAllLines(path);
-		for (String device: devicesList) {
+		for (String device : devicesList) {
 			String[] fields = device.split(",");
 			long code = Long.parseLong(fields[0]);
 			DeviceType deviceType = DeviceType.valueOf(fields[1]);

@@ -35,10 +35,11 @@ public class Main {
 		
 //		System.out.println(dev.getDevices());
 		
+		System.out.println(dev.getSetByBrands());
 		System.out.println(dev.getMapByType());
 		
-		System.out.println("PRUEBA");
-		dev.findCheapestDeviceOfEachType();
+		System.out.println("Lista de Objetos de cada tipo con el menor importe");
+		System.out.println(dev.findCheapestDeviceOfEachType());
 		
 		
 		///////////////////////////////////////////////7
