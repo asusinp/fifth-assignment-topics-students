@@ -5,9 +5,6 @@ package org.escoladeltreball.fifthassignment;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-import java.util.Set;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -61,14 +58,10 @@ public class DeviceManagerImplTest {
 	 */
 	@Test
 	public final void testGetMapByType() throws Exception {
-		List<Device> smartwears = manager.getMapByType().get(DeviceType.smartwear);
-		List<Device> laptops = manager.getMapByType().get(DeviceType.laptop);
-		List<Device> smartphones = manager.getMapByType().get(DeviceType.smartphone);
-		List<Device> desktops = manager.getMapByType().get(DeviceType.desktop);
-		assertEquals(2, smartwears.size());
-		assertEquals(3, laptops.size());
-		assertEquals(3, smartphones.size());
-		assertEquals(2, desktops.size());
+		assertEquals(2, manager.getMapByType().get(DeviceType.smartwear).size());
+		assertEquals(3, manager.getMapByType().get(DeviceType.laptop).size());
+		assertEquals(3, manager.getMapByType().get(DeviceType.smartphone).size());
+		assertEquals(2, manager.getMapByType().get(DeviceType.desktop).size());
 	}
 
 	/**
@@ -78,10 +71,8 @@ public class DeviceManagerImplTest {
 	 */
 	@Test
 	public final void testGetMapByBrand() throws Exception {
-		List<Device> apple = manager.getMapByBrand().get("samsung");
-		List<Device> samsung = manager.getMapByBrand().get("apple");
-		assertEquals(3, apple.size());
-		assertEquals(3, samsung.size());
+		assertEquals(3, manager.getMapByBrand().get("samsung").size());
+		assertEquals(3, manager.getMapByBrand().get("apple").size());
 	}
 
 	/**
@@ -91,18 +82,18 @@ public class DeviceManagerImplTest {
 	 */
 	@Test
 	public final void testGetSetByBrands() throws Exception {	
-		Set<String> brands = manager.getSetByBrands();
-		assertEquals(6, brands.size());
+		assertEquals(6, manager.getSetByBrands().size());
 	}
 
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSortedList(java.util.Comparator)}.
+	 * @throws Exception 
 	 */
-	@Ignore
 	@Test
-	public final void testGetSortedList() {
-		fail("Not yet implemented"); // TODO
+	public final void testGetSortedList() throws Exception {
+		assertEquals(234.5, manager.getSortedList(new DevicePriceComparator()).get(0).getPrice(), 1e-4);
+		assertEquals(DeviceType.smartphone, manager.getSortedList(new DeviceTypeComparator()).get(0).getDeviceType());
 	}
 
 	/**

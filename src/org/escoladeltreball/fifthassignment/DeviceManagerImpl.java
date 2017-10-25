@@ -4,6 +4,7 @@
 package org.escoladeltreball.fifthassignment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -64,8 +65,9 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public List<Device> getSortedList(Comparator<Device> comparator) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Device> sortedList = new ArrayList<Device>(devices);
+		Collections.sort(sortedList,comparator);
+		return sortedList;
 	}
 
 	@Override
