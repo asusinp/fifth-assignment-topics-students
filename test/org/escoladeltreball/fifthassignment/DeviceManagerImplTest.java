@@ -62,6 +62,8 @@ public class DeviceManagerImplTest {
 	public void testGetMapByType() throws Exception {
 		Map<DeviceType, List<Device>> map = testClass.getMapByType();
 		assertEquals(3, map.get(DeviceType.smartphone).size());
+		assertEquals(3, map.get(DeviceType.labtop).size());
+		assertEquals(2, map.get(DeviceType.desktop).size());
 	}
 
 	/**
@@ -73,6 +75,8 @@ public class DeviceManagerImplTest {
 	public void testGetMapByBrand() throws Exception {
 		Map<String, List<Device>> map = testClass.getMapByBrand();
 		assertEquals(3, map.get("samsung").size());
+		assertEquals(3, map.get("apple").size());
+		assertEquals(1, map.get("acer").size());
 	}
 
 	/**

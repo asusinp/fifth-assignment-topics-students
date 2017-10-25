@@ -50,6 +50,11 @@ public class DeviceManagerImpl extends DeviceManager {
 	@Override
 	public Map<String, List<Device>> getMapByBrand() throws Exception {
 		Map<String, List<Device>> map = new HashMap<>();
+//		HashSet<String> brands = new HashSet<>();
+//		for (Device device : devices) {
+//			brands.add(device.getBrand());
+//		}
+//		System.out.println(brands);
 		List<Device> samsungDevices = new LinkedList<>();
 		List<Device> appleDevices = new LinkedList<>();
 		List<Device> acerDevices = new LinkedList<>();
@@ -61,13 +66,13 @@ public class DeviceManagerImpl extends DeviceManager {
 				samsungDevices.add(device);				 
 			} else if (device.getBrand().equals("apple")) {
 				appleDevices.add(device);
-			} else if (device.getType().equals("acer")) {
+			} else if (device.getBrand().equals("acer")) {
 				acerDevices.add(device);
-			} else if (device.getType().equals("hc")) {
+			} else if (device.getBrand().equals("hc")) {
 				hcDevices.add(device);
-			} else if (device.getType().equals("ibm")) {
+			} else if (device.getBrand().equals("ibm")) {
 				ibmDevices.add(device);
-			} else if (device.getType().equals("sun")) {
+			} else if (device.getBrand().equals("sun")) {
 				sunDevices.add(device);
 			}
 		}
@@ -84,6 +89,9 @@ public class DeviceManagerImpl extends DeviceManager {
 	@Override
 	public Set<String> getSetByBrands() throws Exception {
 		Set<String> brandsSet = new HashSet<String>();
+		for (Device device : devices) {
+			brandsSet.add(device.getBrand());
+		}
 		return brandsSet;
 	}
 

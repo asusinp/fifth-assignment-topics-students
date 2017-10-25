@@ -73,9 +73,12 @@ public class Main {
 //		map.put(Boolean.TRUE, l1);
 //		map.put(Boolean.FALSE, l2);
 		
-//		DeviceManagerImpl d1 = new DeviceManagerImpl("devices");
-//		Map<DeviceType, List<Device>> map = d1.getMapByType();
-//		System.out.println(map.get(DeviceType.smartphone).size());
+		DeviceManagerImpl d1 = new DeviceManagerImpl("devices");
+		Map<String, List<Device>> map = d1.getMapByBrand();
+		Set<String> set = d1.getSetByBrands();
+		System.out.println(d1.getMapByBrand());
+		//System.out.println(map.get("samsung").size());
+
 		
 
 	}
