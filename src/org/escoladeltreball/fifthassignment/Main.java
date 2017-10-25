@@ -25,8 +25,13 @@ public class Main {
 
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		/// PROVES ///
+
+		
+		
 		/// ENUM ///
 		WeekEndType type = WeekEndType.valueOf("dissabte"); // Pots trobar el tipus si l'String coincideix. Si no coincideix, dóna error
 		System.out.println(type);

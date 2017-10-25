@@ -37,10 +37,14 @@ public abstract class DeviceManager {
 		for (String line : file) {
 			String[] fields = line.split(",");
 			long id = Long.parseLong(fields[0]);
-			DeviceType type = DeviceType.valueOf(fields[1]);
+			DeviceType type = DeviceType.valueOf(fields[1].toUpperCase());
 			Device device = new Device(id, type, fields[2], fields[3], Double.parseDouble(fields[4]));
 			devices.add(device);
 		}
+	}
+	
+	public List<Device> getDevices() throws Exception {
+		return this.devices;
 	}
 
 	/**
@@ -50,7 +54,7 @@ public abstract class DeviceManager {
 	 * @return Map of a list of devices associated with a device type
 	 * @throws Exception When devices is null
 	 */
-	public abstract Map<DeviceType, List<Device>> getMapByType(DeviceType type) throws Exception;
+	public abstract Map<DeviceType, List<Device>> getMapByType() throws Exception;
 
 	/**
 	 * This method returns a Map of a list of devices associated with a device
@@ -59,7 +63,7 @@ public abstract class DeviceManager {
 	 * @return Map of a list of devices associated with a device brand
 	 * @throws Exception When devices is null
 	 */
-	public abstract Map<String, List<Device>> getMapByBrand(String brand) throws Exception;
+	public abstract Map<String, List<Device>> getMapByBrand() throws Exception;
 
 	/**
 	 * This method returns a set of brands
