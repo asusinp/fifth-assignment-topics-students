@@ -5,6 +5,7 @@ package org.escoladeltreball.fifthassignment;
 
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -82,8 +83,8 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Set<String> getSetByBrands() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Set<String> brandsSet = new HashSet<String>();
+		return brandsSet;
 	}
 
 	@Override

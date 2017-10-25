@@ -73,9 +73,9 @@ public class Main {
 //		map.put(Boolean.TRUE, l1);
 //		map.put(Boolean.FALSE, l2);
 		
-		DeviceManagerImpl d1 = new DeviceManagerImpl("devices");
-		Map<DeviceType, List<Device>> map = d1.getMapByType();
-		System.out.println(map.get(DeviceType.smartphone));
+//		DeviceManagerImpl d1 = new DeviceManagerImpl("devices");
+//		Map<DeviceType, List<Device>> map = d1.getMapByType();
+//		System.out.println(map.get(DeviceType.smartphone).size());
 		
 
 	}
