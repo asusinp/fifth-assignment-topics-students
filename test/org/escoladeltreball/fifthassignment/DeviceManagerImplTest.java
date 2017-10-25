@@ -5,6 +5,9 @@ package org.escoladeltreball.fifthassignment;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -52,10 +55,14 @@ public class DeviceManagerImplTest {
 
 	/**
 	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByType()}.
+	 * @throws Exception 
 	 */
 	@Test
-	public final void testGetMapByType() {
-		fail("Not yet implemented"); // TODO
+	public final void testGetMapByType() throws Exception {
+		Map<DeviceType, List<Device>> map =	manager.getMapByType();	
+		assertEquals(4, map.size());
+		
+		
 	}
 
 	/**

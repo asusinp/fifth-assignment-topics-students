@@ -25,11 +25,23 @@ public class Main {
 
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
+		System.out.println("********** Proves ************");
+		System.out.println();
+		
+		DeviceManagerImpl manager = new DeviceManagerImpl("devices");
+		
+		System.out.println(manager.getMapByType());
+		
+		
+		
+		
+		System.out.println();
 		System.out.println("********** Enum ************");
-		
+		System.out.println();
 		WeekEndType type = WeekEndType.valueOf("dissabte");
 		System.out.println(type);
 		System.out.println();
@@ -79,6 +91,7 @@ public class Main {
 		System.out.println(keys);
 		Collection<String> c = map.values();
 		System.out.println(c);
+		
 		
 		Map<Boolean, List<String>> map2 = new HashMap<>();
 		List<String> l1 = Arrays.asList("ana", "joan", "marta");

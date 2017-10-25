@@ -5,5 +5,5 @@ package org.escoladeltreball.fifthassignment;
  */
 public enum DeviceType {
 
-	smartphone, smartwear, laptop, desktop;
+	SMARTPHONE, SMARTWEAR, LAPTOP, DESKTOP;
 }

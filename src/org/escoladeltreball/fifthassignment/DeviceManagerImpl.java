@@ -3,10 +3,10 @@
  */
 package org.escoladeltreball.fifthassignment;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,26 +18,51 @@ import java.util.Set;
 public class DeviceManagerImpl extends DeviceManager {
 
 	public DeviceManagerImpl(String fileName) throws Exception {
-		super(fileName);
-		List<String> records = Files.readAllLines(Paths.get(fileName));
-		devices = new ArrayList<>();
-
-		for (String record : records) {
-			String[] fields = record.split(",");
-			long id = Long.parseLong(fields[0]);
-			Device device = new Device(id, DeviceType.valueOf(fields[2]), fields[3], fields[4], Double.parseDouble(fields[5]));
-			devices.add(device);			
-		}		
+		super(fileName);			
 	}
 
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
 		// TODO Auto-generated method stub
-		
-		
-		
-		
-		return null;
+		if (devices != null) {
+			Map<DeviceType, List<Device>> map = new HashMap<>();
+			List<Device> device = new ArrayList<>(devices);
+			List<Device> smarthoneDevice = new ArrayList<>();
+			List<Device> smartwearDevice = new ArrayList<>();
+			List<Device> laptopDevice = new ArrayList<>();
+			List<Device> desktopDevice = new ArrayList<>();
+			
+			for (Device device2 : device) {
+				DeviceType type = device2.getType();
+				
+				switch (type) {
+				case SMARTPHONE:
+					smarthoneDevice.add(device2);
+					break;
+				case SMARTWEAR:
+					smartwearDevice.add(device2);
+					break;
+				case DESKTOP:
+					desktopDevice.add(device2);
+					break;
+				case LAPTOP:
+					laptopDevice.add(device2);
+					break;
+				default:
+					break;
+				}			
+			}
+			
+			map.put(DeviceType.SMARTPHONE, smarthoneDevice);
+			map.put(DeviceType.SMARTWEAR, smartwearDevice);
+			map.put(DeviceType.DESKTOP, desktopDevice);
+			map.put(DeviceType.LAPTOP, laptopDevice);	
+			//System.out.println(map.size());
+			return map;
+			
+		} else {
+			throw new Exception("File diveces is empty or not exist");
+		}	
 	}
 
 	@Override
@@ -63,5 +88,9 @@ public class DeviceManagerImpl extends DeviceManager {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
+	
 
 }

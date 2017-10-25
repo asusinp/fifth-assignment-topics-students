@@ -3,10 +3,14 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 
 /**
  * @author pep
@@ -23,8 +27,36 @@ public abstract class DeviceManager {
 	 * @throws Exception
 	 */
 	public DeviceManager(final String fileName) throws Exception {
-		
+		setup(fileName);
 	}
+	
+	public void setup(String fileName) throws Exception {
+		
+		List<String> records = Files.readAllLines(Paths.get(fileName));
+		devices = new ArrayList<>();
+
+		for (String record : records) {
+			String[] fields = record.split(",");
+			long id = Long.parseLong(fields[0]);
+			DeviceType type = null;
+					
+			if (fields[1].equals("smartphone")) {
+				type = type.SMARTPHONE;
+			} else if (fields[1].equals("smartwear")) {
+				type = type.SMARTWEAR;
+			} else if (fields[1].equals("laptop")) {
+				type = type.LAPTOP;
+			} else {
+				type = type.DESKTOP;
+			}
+			String brand = fields[2];
+			String model = fields[3];
+			Double price = Double.parseDouble(fields[4]);			
+			Device device = new Device(id, type, brand, model, price);
+			devices.add(device);			
+		}
+		//System.out.println("size: " + devices.size());
+	}	
 
 	/**
 	 * This method returns a Map of a list of devices associated with a device
@@ -69,4 +101,8 @@ public abstract class DeviceManager {
 	 */
 	public abstract Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception;
 
+	public List<Device> getDevices() {
+		return devices;	
+		
+	}
 }
