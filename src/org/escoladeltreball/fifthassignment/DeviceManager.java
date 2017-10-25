@@ -81,12 +81,12 @@ public abstract class DeviceManager {
 		devices = new ArrayList<>();
 		
 		for (String record: registers) {
-			String[] fields = record.split(".");
+			String[] fields = record.split(",");
 			long id = Long.parseLong(fields[0]);
 			DeviceType type = DeviceType.valueOf(fields[1]);
 			double price = Double.parseDouble(fields[4]);
-			Device student = new Device(id, type, fields[2], fields[3],price);
-			devices.add(student);
+			Device device = new Device(id, type, fields[2], fields[3],price);
+			devices.add(device);
 		}
 		
 	}

@@ -3,7 +3,9 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +23,6 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
