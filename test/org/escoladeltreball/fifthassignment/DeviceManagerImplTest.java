@@ -137,41 +137,28 @@ public class DeviceManagerImplTest {
 		
 		assertEquals(map, dev.getMapByBrand());
 	}
-
-	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSetByBrands()}.
-	 */
-	@Ignore
-	@Test
-	public final void testGetSetByBrands() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSortedList(java.util.Comparator)}.
-	 */
-	@Ignore
-	@Test
-	public final void testGetSortedList() {
-		fail("Not yet implemented"); // TODO
-	}
-
+	
 	/**
 	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#findCheapestDeviceOfEachType()}.
+	 * @throws Exception 
 	 */
-	@Ignore
 	@Test
-	public final void testFindCheapestDeviceOfEachType() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#DeviceManagerImpl(java.lang.String)}.
-	 */
-	@Ignore
-	@Test
-	public final void testDeviceManagerImpl() {
-		fail("Not yet implemented"); // TODO
+	public final void testFindCheapestDeviceOfEachType() throws Exception {
+		Map<DeviceType, Device> map = new HashMap<>();
+		
+		Device d1 = new Device(943521L, DeviceType.valueOf("laptop"), "samsung", "light plus", 988.12D);
+		Device d2 = new Device(943221L, DeviceType.valueOf("smartphone"), "hc", "model1", 833.93D);
+		Device d3 = new Device(876669L, DeviceType.valueOf("desktop"), "ibm", "pentium iv", 2332.22D);
+		Device d4 = new Device(102212L, DeviceType.valueOf("smartwear"), "apple", "apple watch ii", 599.43D);
+		
+		map.put(DeviceType.valueOf("smartphone"), d2);
+		map.put(DeviceType.valueOf("smartwear"), d4);
+		map.put(DeviceType.valueOf("laptop"), d1);
+		map.put(DeviceType.valueOf("desktop"), d3);
+		
+		assertEquals(map, dev.findCheapestDeviceOfEachType());
+		
+		
 	}
 
 }

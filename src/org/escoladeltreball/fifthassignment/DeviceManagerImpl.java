@@ -103,8 +103,60 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Map<DeviceType, Device> map = new HashMap<>();
+		List<Device> devicesList = super.getDevices();
+		List<Device> smartphones = new ArrayList<>();
+		List<Device> smartwears = new ArrayList<>();
+		List<Device> laptops = new ArrayList<>();
+		List<Device> desktops = new ArrayList<>();
+		Device cheapestSmartphone;
+		Device cheapestSmartwear;
+		Device cheapestLaptop;
+		Device cheapestDesktop;
+		for (Device device : devicesList) {
+			if (device.getType().equals(DeviceType.valueOf("smartphone"))) {
+				smartphones.add(device);
+			} else if (device.getType().equals(DeviceType.valueOf("smartwear"))) {
+				smartwears.add(device);
+			} else if (device.getType().equals(DeviceType.valueOf("laptop"))) {
+				laptops.add(device);
+			} else if (device.getType().equals(DeviceType.valueOf("desktop"))) {
+				desktops.add(device);
+			}
+		}
+		cheapestSmartphone = smartphones.get(0);
+		cheapestSmartwear = smartwears.get(0);
+		cheapestLaptop = laptops.get(0);
+		cheapestDesktop = desktops.get(0);
+		for (Device device : smartphones) {
+			if ( device.getPrice() < cheapestSmartphone.getPrice()) {
+				cheapestSmartphone = device;
+			}
+		}
+		
+		for (Device device : smartwears) {
+			if ( device.getPrice() < cheapestSmartwear.getPrice()) {
+				cheapestSmartwear = device;
+			}
+		}
+		
+		for (Device device : laptops) {
+			if ( device.getPrice() < cheapestLaptop.getPrice()) {
+				cheapestLaptop = device;
+			}
+		}
+		
+		for (Device device : desktops) {
+			if ( device.getPrice() < cheapestDesktop.getPrice()) {
+				cheapestDesktop = device;
+			}
+		}
+		map.put(DeviceType.valueOf("smartphone"), cheapestSmartphone);
+		map.put(DeviceType.valueOf("smartwear"), cheapestSmartwear);
+		map.put(DeviceType.valueOf("laptop"), cheapestLaptop);
+		map.put(DeviceType.valueOf("desktop"), cheapestDesktop);
+		
+		return map;
 	}
 
 }
