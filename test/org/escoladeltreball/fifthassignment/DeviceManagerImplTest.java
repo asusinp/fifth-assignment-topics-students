@@ -9,7 +9,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -99,11 +98,14 @@ public class DeviceManagerImplTest {
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#findCheapestDeviceOfEachType()}.
+	 * @throws Exception 
 	 */
-	@Ignore
 	@Test
-	public final void testFindCheapestDeviceOfEachType() {
-		fail("Not yet implemented"); // TODO
+	public final void testFindCheapestDeviceOfEachType() throws Exception {
+		assertEquals(234.5, manager.findCheapestDeviceOfEachType().get(DeviceType.smartwear).getPrice(), 1e-4);
+		assertEquals(833.93, manager.findCheapestDeviceOfEachType().get(DeviceType.smartphone).getPrice(), 1e-4);
+		assertEquals(2332.22, manager.findCheapestDeviceOfEachType().get(DeviceType.desktop).getPrice(), 1e-4);
+		assertEquals(988.12, manager.findCheapestDeviceOfEachType().get(DeviceType.laptop).getPrice(), 1e-4);
 	}
 
 }

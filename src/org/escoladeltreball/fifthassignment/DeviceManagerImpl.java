@@ -72,8 +72,25 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Map<DeviceType, List<Device>> map = getMapByType();
+		Map<DeviceType, Device> cheaps = new HashMap<>();
+		for (DeviceType key : map.keySet()) {
+			Device cheap = cheapestDevice(map.get(key));
+			cheaps.put(key, cheap);
+		}
+		return cheaps;
+	}
+	
+	/**
+	 * Method used to get the cheapest device in a list of devices.
+	 * 
+	 * @param devices
+	 * @return
+	 * @throws Exception
+	 */
+	public Device cheapestDevice(List<Device> devices) throws Exception {
+		Collections.sort(devices,new DevicePriceComparator());
+		return devices.get(0);
 	}
 
 }
