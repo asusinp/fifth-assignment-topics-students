@@ -3,6 +3,8 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,6 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.escoladeltreball.fourthassignment.Student;
 
 /**
  * @author pep
@@ -97,8 +101,9 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public List<Device> getSortedList(Comparator<Device> comparator) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Device> device = new ArrayList<>(devices);
+		Collections.sort(device, comparator);
+		return device;
 	}
 
 	@Override
