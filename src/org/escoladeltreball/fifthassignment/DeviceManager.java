@@ -41,7 +41,7 @@ public abstract class DeviceManager {
 			long id = Long.parseLong(fields[0]);
 			DeviceType type = DeviceType.valueOf(fields[1]); 
 			//create a device with the data on the file
-			Device device = new Device(id, type, fields[2], fields[3], Long.parseLong(fields[4]));
+			Device device = new Device(id, type, fields[2], fields[3], Double.parseDouble(fields[4]));
 			//add the device to the list
 			devices.add(device);
 		}

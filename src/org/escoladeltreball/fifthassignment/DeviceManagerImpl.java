@@ -22,16 +22,67 @@ public class DeviceManagerImpl extends DeviceManager {
 		super(fileName);
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
 		Map<DeviceType, List<Device>> map = new HashMap<>();
-		return null;
+		List<Device> devicesList = super.getDevices();
+		List<Device> smartphones = new ArrayList<>();
+		List<Device> smartwears = new ArrayList<>();
+		List<Device> laptops = new ArrayList<>();
+		List<Device> desktops = new ArrayList<>();
+		for (Device device : devicesList) {
+			if (device.getType().equals(DeviceType.valueOf("smartphone"))) {
+				smartphones.add(device);
+			} else if (device.getType().equals(DeviceType.valueOf("smartwear"))) {
+				smartwears.add(device);
+			} else if (device.getType().equals(DeviceType.valueOf("laptop"))) {
+				laptops.add(device);
+			} else if (device.getType().equals(DeviceType.valueOf("desktop"))) {
+				desktops.add(device);
+			}
+		}
+		map.put(DeviceType.valueOf("smartphone"), smartphones);
+		map.put(DeviceType.valueOf("smartwear"), smartwears);
+		map.put(DeviceType.valueOf("laptop"), laptops);
+		map.put(DeviceType.valueOf("desktop"), desktops);
+		
+		return map;
 	}
 
 	@Override
 	public Map<String, List<Device>> getMapByBrand() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, List<Device>> map = new HashMap<>();
+		List<Device> devicesList = super.getDevices();
+		List<Device> samsungs = new ArrayList<>();
+		List<Device> apples = new ArrayList<>();
+		List<Device> acers = new ArrayList<>();
+		List<Device> hcs = new ArrayList<>();
+		List<Device> ibms = new ArrayList<>();
+		List<Device> suns = new ArrayList<>();
+		for (Device device : devicesList) {
+			if (device.getBrand().equals("samsung")) {
+				samsungs.add(device);
+			} else if (device.getBrand().equals("apple")) {
+				apples.add(device);
+			} else if (device.getBrand().equals("acer")) {
+				acers.add(device);
+			} else if (device.getBrand().equals("hc")) {
+				hcs.add(device);
+			} else if (device.getBrand().equals("ibm")) {
+				ibms.add(device);
+			} else if (device.getBrand().equals("sun")) {
+				suns.add(device);
+			}
+		}
+		map.put("samsung", samsungs);
+		map.put("apple", apples);
+		map.put("acer", acers);
+		map.put("hc", hcs);
+		map.put("ibm", ibms);
+		map.put("sun", suns);
+		
+		return map;
 	}
 
 	@Override

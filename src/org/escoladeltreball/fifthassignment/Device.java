@@ -13,7 +13,7 @@ public class Device {
 	private DeviceType type;
 	private String brand;
 	private String model;
-	private long price;
+	private double price;
 	
 	/**
 	 * @param id
@@ -22,7 +22,7 @@ public class Device {
 	 * @param model
 	 * @param price
 	 */
-	public Device(long id, DeviceType type, String brand, String model, long price) {
+	public Device(long id, DeviceType type, String brand, String model, double price) {
 		this.id = id;
 		this.type = type;
 		this.brand = brand;
@@ -80,14 +80,22 @@ public class Device {
 	/**
 	 * @return the price
 	 */
-	public long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(long price) {
+	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.format("Device [id=%s, type=%s, brand=%s, model=%s, price=%s]", id, type, brand, model, price);
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -99,7 +107,9 @@ public class Device {
 		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		result = prime * result + (int) (price ^ (price >>> 32));
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -127,18 +137,11 @@ public class Device {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
-		if (price != other.price)
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (type != other.type)
 			return false;
 		return true;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return String.format("Device [id=%s, type=%s, brand=%s, model=%s, price=%s]", id, type, brand, model, price);
 	}
 	
 }
