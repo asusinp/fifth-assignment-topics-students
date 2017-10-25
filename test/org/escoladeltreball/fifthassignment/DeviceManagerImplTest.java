@@ -5,10 +5,13 @@ package org.escoladeltreball.fifthassignment;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -52,16 +55,25 @@ public class DeviceManagerImplTest {
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByType()}.
+	 * @throws Exception 
 	 */
 	@Test
-	public final void testGetMapByType() {
-		fail("Not yet implemented"); // TODO
+	public final void testGetMapByType() throws Exception {
+		List<Device> smartwears = manager.getMapByType().get(DeviceType.smartwear);
+		List<Device> laptops = manager.getMapByType().get(DeviceType.laptop);
+		List<Device> smartphones = manager.getMapByType().get(DeviceType.smartphone);
+		List<Device> desktops = manager.getMapByType().get(DeviceType.desktop);
+		assertEquals(2, smartwears.size());
+		assertEquals(3, laptops.size());
+		assertEquals(3, smartphones.size());
+		assertEquals(2, desktops.size());
 	}
 
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByBrand()}.
 	 */
+	@Ignore
 	@Test
 	public final void testGetMapByBrand() {
 		fail("Not yet implemented"); // TODO
@@ -71,6 +83,7 @@ public class DeviceManagerImplTest {
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSetByBrands()}.
 	 */
+	@Ignore
 	@Test
 	public final void testGetSetByBrands() {
 		fail("Not yet implemented"); // TODO
@@ -80,6 +93,7 @@ public class DeviceManagerImplTest {
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSortedList(java.util.Comparator)}.
 	 */
+	@Ignore
 	@Test
 	public final void testGetSortedList() {
 		fail("Not yet implemented"); // TODO
@@ -89,6 +103,7 @@ public class DeviceManagerImplTest {
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#findCheapestDeviceOfEachType()}.
 	 */
+	@Ignore
 	@Test
 	public final void testFindCheapestDeviceOfEachType() {
 		fail("Not yet implemented"); // TODO
