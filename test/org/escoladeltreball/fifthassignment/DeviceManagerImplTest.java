@@ -132,7 +132,6 @@ public class DeviceManagerImplTest {
 		map.put("hc", hcs);
 		map.put("ibm", ibms);
 		map.put("sun", suns);
-		System.out.println(map);
 		
 		assertEquals(map, dev.getMapByBrand());
 	}
