@@ -5,7 +5,11 @@ package org.escoladeltreball.fifthassignment;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.After;
@@ -21,6 +25,7 @@ import org.junit.Test;
  */
 public class DeviceManagerImplTest {
 	DeviceManagerImpl dev;
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -52,46 +57,66 @@ public class DeviceManagerImplTest {
 	}
 
 	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByType()}.
+	 * Test method for
+	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByType()}.
+	 * @throws Exception 
+	 */
+//	@Ignore
+	@Test
+	public final void testGetMapByType() throws Exception {		
+		assertEquals(4, dev.getMapByType().size());
+	}
+	
+
+	/**
+	 * Test method for
+	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByBrand()}.
+	 * 
+	 * @throws Exception
 	 */
 	@Ignore
 	@Test
-	public final void testGetMapByType() {
-		fail("Not yet implemented"); // TODO
+	public final void testGetMapByBrand() throws Exception { // Collection Hierachy
+		List<Device> devicesSmartphone = null;
+		List<Device> devicesLabtop = null;
+		List<Device> devicesDesktop = null;
+		List<Device> devicesSmartWear = null;
+
+		for (Device device : dev.getDevices()) {
+
+		}
+
 	}
 
 	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByBrand()}.
+	 * Test method for
+	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSetByBrands()}.
+	 * 
+	 * @throws Exception
 	 */
-	@Ignore
+	// @Ignore
 	@Test
-	public final void testGetMapByBrand() { // Collection Hierachy
-		Set <String> brands = new HashSet<>();
-		for(Device device: dev.getDevices()) {
+	public final void testGetSetByBrands() throws Exception {
+		Set<String> brands = new HashSet<>();
+		for (Device device : dev.getDevices()) {
 			brands.add(device.getBrand());
-		} 
+		}
+		assertEquals(brands, dev.getSetByBrands());
 	}
 
 	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSetByBrands()}.
-	 */
-	@Ignore
-	@Test
-	public final void testGetSetByBrands() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSortedList(java.util.Comparator)}.
+	 * Test method for
+	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSortedList(java.util.Comparator)}.
 	 */
 	@Ignore
 	@Test
 	public final void testGetSortedList() {
-		fail("Not yet implemented"); // TODO
+		// List<double> prices = new ArrayList<>();
 	}
 
 	/**
-	 * Test method for {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#findCheapestDeviceOfEachType()}.
+	 * Test method for
+	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#findCheapestDeviceOfEachType()}.
 	 */
 	@Ignore
 	@Test
