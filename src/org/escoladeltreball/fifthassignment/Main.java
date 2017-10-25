@@ -26,7 +26,10 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		
+//		DeviceManagerImpl devicesMethods = new DeviceManagerImpl("devices");
+//		System.out.println(devicesMethods.getMapByBrand());
 		
 ///////////////////////// EJEMPLO enum
 //		WeekEndType type = WeekEndType.valueOf("dissabte");
@@ -74,7 +77,7 @@ public class Main {
 //		List<String> l2 = Arrays.asList("miquel","montse","carlos");
 //		map.put(Boolean.TRUE, l1);
 //		map.put(Boolean.FALSE, l2);
-		
+//		System.out.println(map);
 	}
 
 }
