@@ -3,6 +3,8 @@
  */
 package org.escoladeltreball.fifthassignment;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -25,17 +27,20 @@ public class DeviceManagerImpl extends DeviceManager {
 	@Override
 	public Map<DeviceType, List<Device>> getMapByType() throws Exception {
 		Map <DeviceType, List<Device>> map = new HashMap<>();
-		for (Device device : devices) {
-			if (device.getType() == DeviceType.desktop) {
+		for (DeviceType type : DeviceType.values()) {
+			List<Device> l1 = new ArrayList<>();
+			for (Device device : devices) {
+				if (device.getType() == type) {
+					l1.add(device);
+				}
 			}
+			map.put(type,l1);
 		}
-		
-		return null;
+		return map;
 	}
 
 	@Override
 	public Map<String, List<Device>> getMapByBrand() throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -47,14 +52,19 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public List<Device> getSortedList(Comparator<Device> comparator) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Device> devicesSorted = new ArrayList<>(devices);
+		Collections.sort(devicesSorted,comparator);
+		return devicesSorted;
 	}
 
 	@Override
 	public Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Map <DeviceType, Device> cheapMap = new HashMap<>();
+		Map<DeviceType,List<Device>> map = getMapByType();
+		for (DeviceType type : map.keySet()()) {
+			cheapMap.put( deviceList.sort(new DevicePriceComparator()).get(0).getType(), getSortedList(new DevicePriceComparator()).get(0));
+		}
+		return cheapMap;
 	}
 
 }

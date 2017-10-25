@@ -1,26 +1,22 @@
 package org.escoladeltreball.fifthassignment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class Main {
 	private enum WeekEndType {
 		dissabte,diumenge;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		WeekEndType type = WeekEndType.valueOf("dissabte");
 		System.out.println(type);
 		
+		DeviceManagerImpl manager = new DeviceManagerImpl("devices");
+		
+		System.out.println(manager.getMapByType());
+		
+		System.out.println(manager.getSortedList(new DevicePriceComparator()));
 
+		System.out.println(manager.findCheapestDeviceOfEachType());
 	}
 
 }
