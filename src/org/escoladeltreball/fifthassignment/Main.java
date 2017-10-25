@@ -4,6 +4,7 @@
 package org.escoladeltreball.fifthassignment;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -25,11 +26,12 @@ public class Main {
 	
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
-		WeekEndType type = WeekEndType.valueOf("dissabte");
-		System.out.println(type);
+//		WeekEndType type = WeekEndType.valueOf("dissabte");
+//		System.out.println(type);
 		
 //		List<String> list = Arrays.asList("alfa", "charlie", "bravo", "alfa");
 //		//list.add(null);
@@ -40,6 +42,7 @@ public class Main {
 //		System.out.println(list);
 //		Set<String> set = new HashSet<>(list);
 //		set.add("charlie");
+		
 //		set.add(null);
 //		set.remove("alfa");
 //		set.remove("sadsd");
@@ -69,6 +72,11 @@ public class Main {
 //		List<String> l2 = Arrays.asList("miquel", "montse", "carlos");
 //		map.put(Boolean.TRUE, l1);
 //		map.put(Boolean.FALSE, l2);
+		
+		DeviceManagerImpl d1 = new DeviceManagerImpl("devices");
+		Map<DeviceType, List<Device>> map = d1.getMapByType();
+		System.out.println(map.get(DeviceType.smartphone));
+		
 
 	}
 
