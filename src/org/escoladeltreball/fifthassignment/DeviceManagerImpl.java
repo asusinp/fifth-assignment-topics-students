@@ -128,6 +128,7 @@ public class DeviceManagerImpl extends DeviceManager {
 		cheapestSmartwear = smartwears.get(0);
 		cheapestLaptop = laptops.get(0);
 		cheapestDesktop = desktops.get(0);
+		
 		for (Device device : smartphones) {
 			if ( device.getPrice() < cheapestSmartphone.getPrice()) {
 				cheapestSmartphone = device;
@@ -156,6 +157,7 @@ public class DeviceManagerImpl extends DeviceManager {
 		map.put(DeviceType.valueOf("laptop"), cheapestLaptop);
 		map.put(DeviceType.valueOf("desktop"), cheapestDesktop);
 		
+		System.out.println(map);
 		return map;
 	}
 

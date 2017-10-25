@@ -67,7 +67,7 @@ public class DeviceManagerImplTest {
 		List<Device> desktops = new ArrayList<>();
 		Device d1 = new Device(345435L, DeviceType.valueOf("smartphone"), "samsung", "galaxy 8", 901.32D);
 		Device d2 = new Device(452344L, DeviceType.valueOf("smartphone"), "apple", "8+", 1023.33D);
-		Device d3 = new Device(345341L, DeviceType.valueOf("smartwear"), "samsung", "pulsar", 3234.5D);
+		Device d3 = new Device(345341L, DeviceType.valueOf("smartwear"), "samsung", "pulsar 3", 234.5D);
 		Device d4 = new Device(125433L, DeviceType.valueOf("laptop"), "apple", "macbook air", 1235.54D);
 		Device d5 = new Device(943521L, DeviceType.valueOf("laptop"), "samsung", "light plus", 988.12D);
 		Device d6 = new Device(211234L, DeviceType.valueOf("laptop"), "acer", "chrome", 1001.21D);
@@ -109,7 +109,7 @@ public class DeviceManagerImplTest {
 		List<Device> suns = new ArrayList<>();
 		Device d1 = new Device(345435L, DeviceType.valueOf("smartphone"), "samsung", "galaxy 8", 901.32D);
 		Device d2 = new Device(452344L, DeviceType.valueOf("smartphone"), "apple", "8+", 1023.33D);
-		Device d3 = new Device(345341L, DeviceType.valueOf("smartwear"), "samsung", "pulsar", 3234.5D);
+		Device d3 = new Device(345341L, DeviceType.valueOf("smartwear"), "samsung", "pulsar 3", 234.5D);
 		Device d4 = new Device(125433L, DeviceType.valueOf("laptop"), "apple", "macbook air", 1235.54D);
 		Device d5 = new Device(943521L, DeviceType.valueOf("laptop"), "samsung", "light plus", 988.12D);
 		Device d6 = new Device(211234L, DeviceType.valueOf("laptop"), "acer", "chrome", 1001.21D);
@@ -133,7 +133,6 @@ public class DeviceManagerImplTest {
 		map.put("hc", hcs);
 		map.put("ibm", ibms);
 		map.put("sun", suns);
-		System.out.println(map);
 		
 		assertEquals(map, dev.getMapByBrand());
 	}
@@ -149,12 +148,13 @@ public class DeviceManagerImplTest {
 		Device d1 = new Device(943521L, DeviceType.valueOf("laptop"), "samsung", "light plus", 988.12D);
 		Device d2 = new Device(943221L, DeviceType.valueOf("smartphone"), "hc", "model1", 833.93D);
 		Device d3 = new Device(876669L, DeviceType.valueOf("desktop"), "ibm", "pentium iv", 2332.22D);
-		Device d4 = new Device(102212L, DeviceType.valueOf("smartwear"), "apple", "apple watch ii", 599.43D);
+		Device d4 = new Device(345341L, DeviceType.valueOf("smartwear"), "samsung", "pulsar 3", 234.5D);
 		
 		map.put(DeviceType.valueOf("smartphone"), d2);
 		map.put(DeviceType.valueOf("smartwear"), d4);
 		map.put(DeviceType.valueOf("laptop"), d1);
 		map.put(DeviceType.valueOf("desktop"), d3);
+		System.out.println(map);
 		
 		assertEquals(map, dev.findCheapestDeviceOfEachType());
 		
