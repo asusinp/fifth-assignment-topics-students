@@ -6,6 +6,7 @@ package org.escoladeltreball.fifthassignment;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,14 +39,27 @@ public class DeviceManagerImpl extends DeviceManager {
 
 	@Override
 	public Map<String, List<Device>> getMapByBrand() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Set<String> brands = getSetByBrands();
+		Map<String, List<Device>> map = new HashMap<>();
+		for (String brand : brands) {
+			List<Device> list = new ArrayList<>();
+			for (Device device : devices) {
+				if (brand.equals(device.getBrand())) {
+					list.add(device);
+				}
+			}
+			map.put(brand, list);
+		}
+		return map;
 	}
 
 	@Override
 	public Set<String> getSetByBrands() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Set<String> brands = new HashSet<>();
+		for (Device device : devices) {
+			brands.add(device.getBrand());
+		}
+		return brands;
 	}
 
 	@Override

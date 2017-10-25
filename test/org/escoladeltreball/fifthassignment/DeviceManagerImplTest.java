@@ -6,6 +6,7 @@ package org.escoladeltreball.fifthassignment;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -55,7 +56,8 @@ public class DeviceManagerImplTest {
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByType()}.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	@Test
 	public final void testGetMapByType() throws Exception {
@@ -72,21 +74,25 @@ public class DeviceManagerImplTest {
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getMapByBrand()}.
+	 * @throws Exception 
 	 */
-	@Ignore
 	@Test
-	public final void testGetMapByBrand() {
-		fail("Not yet implemented"); // TODO
+	public final void testGetMapByBrand() throws Exception {
+		List<Device> apple = manager.getMapByBrand().get("samsung");
+		List<Device> samsung = manager.getMapByBrand().get("apple");
+		assertEquals(3, apple.size());
+		assertEquals(3, samsung.size());
 	}
 
 	/**
 	 * Test method for
 	 * {@link org.escoladeltreball.fifthassignment.DeviceManagerImpl#getSetByBrands()}.
+	 * @throws Exception 
 	 */
-	@Ignore
 	@Test
-	public final void testGetSetByBrands() {
-		fail("Not yet implemented"); // TODO
+	public final void testGetSetByBrands() throws Exception {	
+		Set<String> brands = manager.getSetByBrands();
+		assertEquals(6, brands.size());
 	}
 
 	/**
