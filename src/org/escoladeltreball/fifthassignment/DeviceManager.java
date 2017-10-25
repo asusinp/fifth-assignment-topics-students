@@ -87,4 +87,18 @@ public abstract class DeviceManager {
 	 */
 	public abstract Map<DeviceType, Device> findCheapestDeviceOfEachType() throws Exception;
 
+	/**
+	 * @return the devices
+	 */
+	public List<Device> getDevices() {
+		return devices;
+	}
+
+	/**
+	 * @param devices the devices to set
+	 */
+	public void setDevices(List<Device> devices) {
+		this.devices = devices;
+	}
+
 }
